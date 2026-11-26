@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: burmese-recap-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SECRET_KEY
+        sync: false
+      - key: APP_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: WORKER_TOKEN
+        generateValue: true
+      - key: TOKEN_EXPIRE_DAYS
+        value: "14"
